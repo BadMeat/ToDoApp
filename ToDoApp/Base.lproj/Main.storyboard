@@ -1,24 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nZM-dc-qZy">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--My List-->
+        <scene sceneID="SEr-w2-xVV">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="MSh-XB-CnR" customClass="ToDoTableViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1F1-0i-XSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" textLabel="lRl-nb-u5j" style="IBUITableViewCellStyleDefault" id="jPu-sx-97L">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jPu-sx-97L" id="ZGe-oH-arf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lRl-nb-u5j">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MSh-XB-CnR" id="u0T-uL-ydj"/>
+                            <outlet property="delegate" destination="MSh-XB-CnR" id="Rad-JR-ZMq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My List" id="B9u-W6-22n">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TVJ-pV-4ee">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="vzg-DN-oWj" kind="presentation" identifier="ShowAddTodo" id="bbc-ce-xG2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x1I-h0-Dxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1828" y="-220.83958020989508"/>
+        </scene>
+        <!--To Do View Controller-->
+        <scene sceneID="zVD-Ee-UD0">
+            <objects>
+                <viewController id="vzg-DN-oWj" customClass="ToDoViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Mb-NT-K1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="q39-GV-Jdz">
+                                <rect key="frame" x="16" y="20" width="343" height="267"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What To Do" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7B3-tq-RxJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="245" text="Say Something. . ." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Syy-hO-JDc">
+                                        <rect key="frame" x="0.0" y="34.5" width="343" height="232.5"/>
+                                        <color key="backgroundColor" red="0.36206053029478391" green="0.67187649106483449" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="vzg-DN-oWj" id="3Q8-o9-RIN"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-5U-b6p">
+                                <rect key="frame" x="16" y="592" width="343" height="75"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7yz-og-T02">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
+                                        <segments>
+                                            <segment title="1"/>
+                                            <segment title="2"/>
+                                            <segment title="3"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yv0-9h-ahr">
+                                        <rect key="frame" x="0.0" y="36" width="343" height="39"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3i-iU-qZZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="39"/>
+                                                <color key="backgroundColor" red="0.36206053030000002" green="0.67187649110000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="done:" destination="vzg-DN-oWj" eventType="touchUpInside" id="WSS-3l-KEj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W05-jJ-DEP">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
+                                                <color key="backgroundColor" red="0.36206053030000002" green="0.67187649110000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Iqo-fI-3z4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancel:" destination="vzg-DN-oWj" eventType="touchUpInside" id="JLo-q0-5PD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7yz-og-T02" secondAttribute="trailing" id="qff-0H-Vb8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yv0-9h-ahr" secondAttribute="trailing" id="vcT-Qe-bhk"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45529712734132066" green="0.80838290956430003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="q39-GV-Jdz" firstAttribute="top" secondItem="Kdu-c5-5vz" secondAttribute="top" id="5fa-Vn-SzY"/>
+                            <constraint firstItem="Kdu-c5-5vz" firstAttribute="trailing" secondItem="q39-GV-Jdz" secondAttribute="trailing" constant="16" id="7Yx-qz-Ogu"/>
+                            <constraint firstItem="WBN-5U-b6p" firstAttribute="leading" secondItem="Kdu-c5-5vz" secondAttribute="leading" constant="16" id="QEX-qo-5R7"/>
+                            <constraint firstItem="Kdu-c5-5vz" firstAttribute="trailing" secondItem="WBN-5U-b6p" secondAttribute="trailing" constant="16" id="aGI-Sj-Loy"/>
+                            <constraint firstItem="q39-GV-Jdz" firstAttribute="height" secondItem="5Mb-NT-K1Z" secondAttribute="height" multiplier="0.4" id="cOW-AK-4hF"/>
+                            <constraint firstAttribute="bottom" secondItem="WBN-5U-b6p" secondAttribute="bottom" id="zAK-Lv-ire"/>
+                            <constraint firstItem="q39-GV-Jdz" firstAttribute="leading" secondItem="Kdu-c5-5vz" secondAttribute="leading" constant="16" id="zTm-cl-oGx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kdu-c5-5vz"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottonConstraint" destination="zAK-Lv-ire" id="w2w-WX-ETI"/>
+                        <outlet property="doneButton" destination="F3i-iU-qZZ" id="ULr-fg-j6O"/>
+                        <outlet property="segementControl" destination="7yz-og-T02" id="qHW-cg-fIQ"/>
+                        <outlet property="textView" destination="Syy-hO-JDc" id="Tlk-1g-3Mc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddc-kE-TSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2797.5999999999999" y="-369.26536731634184"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ICN-lz-szU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nZM-dc-qZy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="267-oM-doe">
+                        <rect key="frame" x="0.0" y="20" width="375" height="101.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.3164625164" green="0.91853545979999995" blue="0.20657273840000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="35"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MSh-XB-CnR" kind="relationship" relationship="rootViewController" id="olr-gJ-hl3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEM-9x-bEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="888.79999999999995" y="-220.83958020989508"/>
         </scene>
     </scenes>
 </document>
